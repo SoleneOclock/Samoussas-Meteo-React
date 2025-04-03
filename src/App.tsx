@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import City from './City';
 import { NavLink, Route, Routes } from 'react-router';
 import MainPage from './MainPage';
 import CityPage from './CityPage';

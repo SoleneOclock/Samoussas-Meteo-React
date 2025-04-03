@@ -27,6 +27,7 @@ export default function CityPage() {
 	return (
 		<main>
 			<h1>Details de la ville : {city}</h1>
+			<div>{temp} °C</div>
 			<img src={`https://openweathermap.org/img/wn/${icon}.png`} alt="desc" />
 		</main>
 	);
