@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import City from './City';
+import { NavLink, Route, Routes } from 'react-router';
+import MainPage from './MainPage';
+import CityPage from './CityPage';
 
 function App() {
 	// STATE pour stocker le tableau des villes
@@ -13,33 +16,34 @@ function App() {
 
 	return (
 		<div className="h-screen bg-linear-to-b from-sky-500 to-indigo-500">
-			<h1 className="text-fuchsia-600 p-4 mb-4 text-2xl text-center bg-amber-200">
-				O'Meteo
-			</h1>
+			<nav className="text-fuchsia-600 p-4 mb-4 text-2xl flex justify-center gap-4 bg-amber-200">
+				<NavLink
+					className={({ isActive }) => {
+						return isActive ? 'underline' : '';
+					}}
+					to="/"
+				>
+					O'Meteo
+				</NavLink>
+				<NavLink
+					className={({ isActive }) => {
+						return isActive ? 'underline' : '';
+					}}
+					to="/contact"
+				>
+					Contact
+				</NavLink>
+			</nav>
 
-			<form
-				className="flex justify-center gap-4 m-4"
-				action={(formData) => {
-					// ajouter une ville dans la liste
-					const newCity = formData.get('city') as string;
-
-					setCities([...cities, newCity]);
-				}}
-			>
-				<input
-					className="bg-amber-50 rounded p-1"
-					type="text"
-					name="city"
-					placeholder="new city..."
+			<Routes>
+				<Route
+					path="/"
+					element={<MainPage cities={cities} setCities={setCities} />}
 				/>
-				<button type="submit">OK</button>
-			</form>
-
-			<div className="flex gap-4 flex-wrap justify-center">
-				{cities.map((city) => (
-					<City key={city} cityName={city} />
-				))}
-			</div>
+				<Route path="/contact" element={<p>Contact page</p>} />
+				<Route path="/city/:city" element={<CityPage />} />
+				<Route path="*" element={<p>404 not found</p>} />
+			</Routes>
 		</div>
 	);
 }
