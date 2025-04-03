@@ -22,7 +22,7 @@ function App() {
 					}}
 					to="/"
 				>
-					O'Meteo
+					O'Meteo Samoussas !!!
 				</NavLink>
 				<NavLink
 					className={({ isActive }) => {
