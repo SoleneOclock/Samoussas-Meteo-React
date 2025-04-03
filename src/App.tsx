@@ -4,6 +4,8 @@ import MainPage from './MainPage';
 import CityPage from './CityPage';
 
 function App() {
+	const apiUsed = import.meta.env.VITE_API_NAME;
+
 	// STATE pour stocker le tableau des villes
 	const [cities, setCities] = useState([
 		'Lully',
@@ -22,8 +24,9 @@ function App() {
 					}}
 					to="/"
 				>
-					O'Meteo Samoussas !!!
+					O'Meteo Samoussas
 				</NavLink>
+				<p>serveur back utilisé : {apiUsed}</p>
 				<NavLink
 					className={({ isActive }) => {
 						return isActive ? 'underline' : '';
