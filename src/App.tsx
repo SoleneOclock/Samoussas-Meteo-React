@@ -12,10 +12,13 @@ function App() {
 	]);
 
 	return (
-		<div>
-			<h1>O Meteo</h1>
+		<div className="h-screen bg-linear-to-b from-sky-500 to-indigo-500">
+			<h1 className="text-fuchsia-600 p-4 mb-4 text-2xl text-center bg-amber-200">
+				O'Meteo
+			</h1>
 
 			<form
+				className="flex justify-center gap-4 m-4"
 				action={(formData) => {
 					// ajouter une ville dans la liste
 					const newCity = formData.get('city') as string;
@@ -23,12 +26,20 @@ function App() {
 					setCities([...cities, newCity]);
 				}}
 			>
-				<input type="text" name="city" />
+				<input
+					className="bg-amber-50 rounded p-1"
+					type="text"
+					name="city"
+					placeholder="new city..."
+				/>
+				<button type="submit">OK</button>
 			</form>
 
-			{cities.map((city) => (
-				<City key={city} cityName={city} />
-			))}
+			<div className="flex gap-4 flex-wrap justify-center">
+				{cities.map((city) => (
+					<City key={city} cityName={city} />
+				))}
+			</div>
 		</div>
 	);
 }

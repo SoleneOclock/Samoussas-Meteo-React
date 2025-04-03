@@ -29,7 +29,10 @@ export default function City({ cityName }: CityProps) {
 	}, []);
 
 	return (
-		<div key={cityName}>
+		<div
+			key={cityName}
+			className="border w-1/3 sm:1/4 border-gray-50 p-4 rounded-sm hover:bg-fuchsia-400 bg-gray-50/50"
+		>
 			<div>{cityName}</div>
 			<div>{temp}°C</div>
 		</div>
